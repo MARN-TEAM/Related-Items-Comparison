@@ -1,0 +1,58 @@
+#app{
+    width: 940px;
+    margin: auto;
+    font-family: “adobe-clean”, sans-serif;
+    color : #5C5C5C;
+    
+
+}
+.price-card-related {
+    font-size: 12px;
+    font-weight: 10;
+    margin-left: -18px;
+}
+
+.related-card{
+    margin-bottom: 25px;
+
+}
+.outfit-card{
+    margin-bottom: 25px;
+}
+.title-cards{
+    font-size: 14px;
+    font-weight: 1px;
+}
+.card-customize{
+    width: 10px;
+    height: 290px;
+    position: relative;
+    
+}
+.card-text{
+    font-size: 16px;
+    font-weight: 700;
+    color: black;
+    margin-top: -10px;
+    margin-bottom: 4px;
+    margin-left: -18px;
+
+}
+.card-title{
+    font-size: 11px;
+    margin-top: -10px;
+    margin-left: -18px;
+}
+.card-body{
+    margin-top: -13px;
+    margin-left: 5px;
+}
+.card-img-top{
+    margin-top: -24px;
+}
+.close-btn{
+    margin-left: 200px;
+    margin-bottom: -10px;
+    color: black;
+    font-size: 25px;
+}

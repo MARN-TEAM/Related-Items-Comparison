@@ -1,4 +1,7 @@
-import React from 'react'
+import React from 'react';
+import Related from './related.jsx';
+import Card from './Card.jsx';
+import Outfit from './Outfit.jsx';
 
 
 class App extends React.Component{
@@ -9,7 +12,11 @@ class App extends React.Component{
     render(){
         return(
             <div>
-                <h1>Test Hello</h1>
+                
+                <Related />
+                
+                <Outfit />
+
             </div>
         )
     }
