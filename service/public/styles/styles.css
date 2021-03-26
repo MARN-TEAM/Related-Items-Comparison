@@ -10,6 +10,7 @@
     font-size: 12px;
     font-weight: 10;
     margin-left: -18px;
+    margin-top: 7px;
 }
 
 .related-card{
@@ -33,13 +34,13 @@
     font-size: 16px;
     font-weight: 700;
     color: black;
-    margin-top: -10px;
+    margin-top: 15px;
     margin-bottom: 4px;
     margin-left: -18px;
 
 }
 .card-title{
-    font-size: 11px;
+    font-size: 13px;
     margin-top: -10px;
     margin-left: -18px;
 }
@@ -62,7 +63,21 @@
     color: black;
     font-size: 18px;
 }
+.star-rating{
+  margin-top: 20px;
+  margin-left: -18px;
+  font-size: 16px;
+}
 
+.Colored-Star-rating-empty{
+  color: black;
+  -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #525252;
+  background: linear-gradient(90deg,#525252 0%, white 0%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 
 
@@ -118,4 +133,20 @@
       visibility: visible;
     }
   }
-  
+  /* .carousel-control-prev-icon:after {
+    width: 14px;
+      height: 14px;
+    content: '<';
+    font-size: 30px;
+    color: black;
+    
+  } */
+  .testimonial-carousel .carousel-control::before {
+    color: black;
+}  
+      
+  .carousel-control-next-icon, .carousel-control-prev-icon
+  {
+      width: 14px;
+      height: 14px;
+  }

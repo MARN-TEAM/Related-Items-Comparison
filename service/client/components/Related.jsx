@@ -12,18 +12,19 @@ export default class Related extends Component {
 }
 componentDidMount(){
     $.ajax({
-        url:'https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/11003/related',
+        url:'https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/11007/related',
         type: 'GET',
         contentType:'application/json',
         headers: {"Authorization":token},
         success:(data)=>{
-            console.log(data);
+            // console.log(data);
             for(var i=0; i<data.length; i++){
                 this.getRelated(data[i])
             }
         }
 
     })
+  
 }
 getRelated(ID){
     $.ajax({
@@ -32,46 +33,61 @@ getRelated(ID){
         contentType:'application/json',
         headers: {"Authorization":token},
         success:(data)=>{
-            console.log(data);
-            var prod = this.state.products
-            prod.push(data)
-            this.setState({products: prod})
-        }
+            // console.log("related dataaaaaaa",data);
 
+            $.ajax({  
+                url:'https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/'+ID+'/styles',
+                type: 'GET',
+                contentType:'application/json',
+                headers: {"Authorization":token},
+                success:(photos)=>{
+                    // console.log(photos)
+                    data.photo = photos.results[0].photos[0].thumbnail_url
+                    // console.log("styles*********",data);
+                    var prod = this.state.products
+                    prod.push(data)
+                    this.setState({products: prod})
+                    
+                }
+            })
+            
+        }
     })
 }
 
-styles(){
-    $/ajax({  url:'https://app-hrsei-api.herokuapp.com/api/fec2/hrnyc/products/11009/styles',
-    type: 'GET',
-    contentType:'application/json',
-    headers: {"Authorization":token},
-    success:(data)=>{
-        console.log("style*********",data);
-        
-    }
-})
-}
+
     render() {
-        console.log(this.state.products)
+        // console.log(this.state.products)
         return (
             <div className="related-card">
             <p className='title-cards'>RELATED PRODUCTS</p>
             <div className="carousel slide multi-item-carousel" id="theCarousel" data-interval="false">
-    <div className="carousel-inner row w-100 mx-auto">
+            <div className="carousel-inner row w-100 mx-auto">
 
-    {this.state.products.map((el, i)=>  <div className={(i == 0)?"carousel-item col-md-3 active" : "carousel-item col-md-3 "} key={i}><Card product={el}  /></div>)}
+    {this.state.products.map((el, i)=>  <div className={(i == 0)?"carousel-item col-md-3 active" : "carousel-item col-md-3 "} key={i}><Card product={el}  photo={this.state.style} am={'related'}/></div>)}
     </div>
     <a className="carousel-control-prev" href="#theCarousel" role="button" data-slide="prev">
     <span className="carousel-control-prev-icon" aria-hidden="true"></span>
     <span className="sr-only">Previous</span>
     </a>
-    <a className="carousel-control-next" href="#theCarousel" role="button" data-slide="next" style={{color: "black"}}>
-    <span className="carousel-control-next-icon" style={{color: "black"}} aria-hidden="true"></span>
-    <span className="sr-only" style={{color: "black"}}>Next</span>
+    <a className="carousel-control-next" href="#theCarousel" role="button" data-slide="next">
+    <span className="carousel-control-next-icon"  aria-hidden="true"></span>
+    <span className="sr-only">Next</span>
     </a>
 </div>
                     </div>
         )
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+

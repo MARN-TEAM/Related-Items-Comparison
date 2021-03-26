@@ -7,6 +7,9 @@ import Outfit from './Outfit.jsx';
 class App extends React.Component{
     constructor(props){
         super(props)
+        this.state = {
+            bag:[11003,11004,11005]
+        }
     }
 
     render(){
@@ -15,7 +18,7 @@ class App extends React.Component{
                 
                 <Related />
                 
-                <Outfit />
+                <Outfit data={this.state.bag} />
 
             </div>
         )
