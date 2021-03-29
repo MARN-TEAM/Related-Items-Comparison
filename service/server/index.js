@@ -12,8 +12,9 @@ app.use(express.static(__dirname + '/../public'));
 
 app.use('',routes)
 
+app.use('/app.js', express.static(__dirname + '/../public/bundle.js'))
 
 
-app.listen(3000, () => {
-    console.log(`listening on port 3000`);
+app.listen(3002, () => {
+    console.log(`listening on port 3002`);
   });
