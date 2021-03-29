@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Card from './Card.jsx';
 import {token} from '../../config.js'
 import $ from 'jquery'
+import Carousel from 'react-elastic-carousel';
 
 export default class Outfit extends Component {
   constructor(props) {
@@ -11,11 +12,15 @@ export default class Outfit extends Component {
 
     }
   }
+
   componentDidMount(){
-    for(var i=0; i < this.props.data.length ; i++){
-        this.getOutfit(this.props.data[i])
-    }
+    // console.log('aaaa',this.props.data)
+    // this.setState({outfit:this.props.data})
+    // for(var i=0; i < this.props.data.length ; i++){
+    //     this.getOutfit(this.props.data[i])
+    // }
   }
+
 
   getOutfit(ID){
     console.log(ID);
@@ -39,7 +44,7 @@ export default class Outfit extends Component {
                     var prod = this.state.outfit
                     prod.push(data)
                     this.setState({outfit: prod})
-                    
+                    console.log('prod',prod)
                 }
             })
             
@@ -49,24 +54,19 @@ export default class Outfit extends Component {
     render() {
         return (
             <div className="outfit-card">
-                <p className='title-cards'>OUTFIT PRODUCTS</p>
-                <div className="container">
-  <div className="carousel slide multi-item-carousel" id="theCarousel1" data-interval="false">
-    <div className="carousel-inner row w-100 mx-auto">
-    {this.state.outfit.map((el, i)=>  <div className={(i == 0) ? "carousel-item col-md-3 active" : "carousel-item col-md-3 "} key={i}><Card product={el}  photo={this.state.style} am={'outfit'}/></div>)}
+              {console.log('=======>',this.props.bag)}
+                <p className='title-cards1'>OUTFIT PRODUCTS</p>
+                <Carousel itemsToShow={3.5} pagination={false}>
+                  
+                  <Card am={'empty'} getdatax={this.props.getdatax} /> 
+                  
+                  
+    {this.props.bag.map((el, i)=>  <div key={i}>  <Card product={el}  dedeleteFromBag={this.props.deleteFromBag} am={'outfit'}/></div>)}
   
-    </div>
-    <a className="carousel-control-prev" href="#theCarousel1" role="button" data-slide="prev">
-      <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span className="sr-only">Previous</span>
-    </a>
-    <a className="carousel-control-next" href="#theCarousel1" role="button" data-slide="next">
-      <span className="carousel-control-next-icon"  aria-hidden="true"></span>
-      <span className="sr-only" >Next</span>
-    </a>
-  </div>
+</Carousel>
+
 </div>
-            </div>
+
         )
     }
 }
